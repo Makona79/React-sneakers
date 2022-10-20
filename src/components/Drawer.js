@@ -1,30 +1,37 @@
 import React from "react";
 
-const Drawer = () => {
+const Drawer = ({ onClose, items }) => {
 	return (
 		<div className="overlay">
 			<div className="drawer">
 				<h2 className="drawer__title">Корзина</h2>
-				<img className="drawer__close" src="/img/btn-remove.svg" alt="close" />
+				<img
+					onClick={onClose}
+					className="drawer__close"
+					src="/img/btn-remove.svg"
+					alt="close"
+				/>
 				<div className="drawer__content">
-					<div className="drawer__cart-item cart-item">
-						<img
-							width={70}
-							height={70}
-							className="cart-item__image"
-							src="/img/sneakers/1.jpg"
-							alt="Sneakers"
-						/>
-						<div className="cart-item__descr">
-							<p>Мужские Кроссовки Nike Air Max 270</p>
-							<span>12 999руб.</span>
+					{items.map((obj) => (
+						<div className="drawer__cart-item cart-item">
+							<img
+								width={70}
+								height={70}
+								className="cart-item__image"
+								src={obj.imageUrl}
+								alt="Sneakers"
+							/>
+							<div className="cart-item__descr">
+								<p>{obj.title}</p>
+								<span>{obj.price}руб.</span>
+							</div>
+							<img
+								className="cart-item__icon"
+								src="/img/btn-remove.svg"
+								alt="remove"
+							/>
 						</div>
-						<img
-							className="cart-item__icon"
-							src="/img/btn-remove.svg"
-							alt="remove"
-						/>
-					</div>
+					))}
 				</div>
 				<div className="drawer__box-summ">
 					<ul className="drawer__summ summ">
