@@ -1,6 +1,6 @@
 import React from "react";
 
-const Drawer = ({ onClose, items }) => {
+const Drawer = ({ onClose, items, onRemove }) => {
 	return (
 		<div className="overlay">
 			<div className="drawer">
@@ -11,7 +11,9 @@ const Drawer = ({ onClose, items }) => {
 					src="/img/btn-remove.svg"
 					alt="close"
 				/>
-				<div className="drawer__content">
+				{
+					items.length > 0 ? (
+<div className="drawer__content">
 					{items.map((obj) => (
 						<div className="drawer__cart-item cart-item">
 							<img
@@ -26,6 +28,7 @@ const Drawer = ({ onClose, items }) => {
 								<span>{obj.price}руб.</span>
 							</div>
 							<img
+								onClick={() => onRemove(obj.id)}
 								className="cart-item__icon"
 								src="/img/btn-remove.svg"
 								alt="remove"
@@ -33,6 +36,13 @@ const Drawer = ({ onClose, items }) => {
 						</div>
 					))}
 				</div>
+					) : (
+						<div className="drawer__cart-item cart-item">
+						<p>Корзина пустая добавьте что-нибудь</p>
+						</div>
+					)
+				}
+				
 				<div className="drawer__box-summ">
 					<ul className="drawer__summ summ">
 						<li className="summ__item">

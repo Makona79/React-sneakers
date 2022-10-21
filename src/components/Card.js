@@ -2,19 +2,26 @@ import React from "react";
 
 const Card = ({ imageUrl, title, price, onFavorite, onPlus }) => {
 	const [isAdded, setIsAdded] = React.useState(false);
+	const [isFavorite, setIsFavorite] = React.useState(false);
 	const onClickPlus = () => {
 		//setIsAdded(true);
-		onPlus({imageUrl, title, price});
+		onPlus({ imageUrl, title, price });
 		setIsAdded(!isAdded);
+	};
+
+	const onClickFavorite = () => {
+		//setIsFavorite(true);
+		onFavorite({ imageUrl, title, price });
+		setIsFavorite(!setIsFavorite);
 	};
 
 	return (
 		<div className="content__card card">
 			<img
-				onClick={onFavorite}
+				onClick={onClickFavorite}
 				width={32}
 				height={32}
-				src="/img/liked.svg"
+				src={isFavorite ? "/img/liked.svg" : "/img/unliked.svg"}
 				alt="кроссовки зеленые"
 				className="card__favorite"
 			/>

@@ -215,23 +215,31 @@ header {
 		font-weight: 700;
 		font-size: 32px;
 	}
-	&__search {
-		display: flex;
-		border: 1px solid #f3f3f3;
-		border-radius: 10px;
-		padding: 0 15px;
 
-		input {
-			width: 200px;
-			outline: none;
-			border: 0;
-			padding: 13px;
-			font-size: 16px;
-		}
-	}
 	&__box {
 		display: flex;
 		flex-wrap: wrap;
+	}
+}
+.search {
+	position: relative;
+	display: flex;
+	border: 1px solid #f3f3f3;
+	border-radius: 10px;
+	padding: 0 15px;
+	&__clear {
+		position: absolute;
+		right: 5px;
+		top: 14px;
+		width: 18px;
+		height: 18px;
+	}
+	input {
+		width: 200px;
+		outline: none;
+		border: 0;
+		padding: 13px;
+		font-size: 16px;
 	}
 }
 .card {
